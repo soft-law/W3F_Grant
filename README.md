@@ -57,9 +57,9 @@ This repository serves as a transparent, version-controlled submission for the *
 
 For investment opportunities, partnership inquiries, or questions, feel free to reach out:
 
-**Mario Andrade**  
+**Wario**  
 Director, SoftLaw  
-📧 mario@softlaw.io
+📧 wario@soft.law
 
 
 
