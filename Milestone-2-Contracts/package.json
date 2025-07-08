@@ -1,0 +1,31 @@
+{
+  "name": "milestone-2-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:local": "test --network localNode",
+    "test:paseo": "test --network passetHub",
+    "debug:paseo": "scripts/debug-paseo.js --network passetHub"
+  },
+  "keywords": [
+    "polkadot",
+    "polkavm",
+    "smart-contracts",
+    "nft",
+    "copyright"
+  ],
+  "author": "SoftLaw Company",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.13",
+    "@parity/hardhat-polkadot": "^0.1.6",
+    "dotenv": "^16.5.0",
+    "solc": "^0.8.28"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0"
+  }
+}
