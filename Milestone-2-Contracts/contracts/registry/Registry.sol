@@ -5,7 +5,7 @@ import {Ownable} from "./Ownable.sol";
 import {ERC721} from "./ERC721.sol";
 import {IERC721} from "../interfaces/IERC721.sol";
 import {ReentrancyGuard} from "./ReentrancyGuard.sol";
-import {CopyrightsRegistryTypes} from "./RTypes.sol";
+import {CopyrightsRegistryTypes} from "./RegistryTypes.sol";
 
 /// @title RCopyrights - Complete Copyrights Registry with NFT functionality
 contract CopyrightsRegistry is
@@ -14,6 +14,12 @@ contract CopyrightsRegistry is
     ReentrancyGuard,
     CopyrightsRegistryTypes
 {
+    // Registry configuration
+    uint256 public constant REGISTRY_FEE = 0.01 ether;
+
+    // Beneficiary   configuration
+    address internal feeRecipient;
+
     /*//////////////////////////////////////////////////////////////
                             TOKEN URI STORAGE
     //////////////////////////////////////////////////////////////*/
@@ -29,19 +35,27 @@ contract CopyrightsRegistry is
     mapping(uint256 => uint256) private _ownedTokensIndex;
 
     /*//////////////////////////////////////////////////////////////
+                        OVERRIDE FUNCTIONS - FIXED
+    //////////////////////////////////////////////////////////////*/
+
+    /// @dev Override owner function to resolve inheritance conflicts
+    function owner() public view override returns (address) {
+        return Ownable.owner();
+    }
+
+    /*//////////////////////////////////////////////////////////////
                             CONSTRUCTOR
     //////////////////////////////////////////////////////////////*/
 
     /// @dev Constructor
     constructor(
         address _feeRecipient
-    ) Ownable(msg.sender) ERC721("Registry", "RCP") {
+    ) Ownable(msg.sender) ERC721("Registry", "RCP") ReentrancyGuard() {
         feeRecipient = _feeRecipient;
 
         // Initialize the counters from CopyrightsRegistryTypes
         _nextCollectionId = 1;
         _nextCopyrightId = 1;
-        _nextLicenseId = 1;
     }
 
     /*//////////////////////////////////////////////////////////////
@@ -340,17 +354,17 @@ contract CopyrightsRegistry is
     }
 
     function tokenOfOwnerByIndex(
-        address owner,
+        address _owner,
         uint256 index
     ) public view returns (uint256) {
-        require(index < balanceOf(owner), "INDEX_OUT_OF_BOUNDS");
-        return _ownedTokens[owner][index];
+        require(index < balanceOf(_owner), "INDEX_OUT_OF_BOUNDS");
+        return _ownedTokens[_owner][index];
     }
 
     function tokensOfOwner(
-        address owner
+        address _owner
     ) external view returns (uint256[] memory) {
-        return _ownedTokens[owner];
+        return _ownedTokens[_owner];
     }
 
     /*//////////////////////////////////////////////////////////////

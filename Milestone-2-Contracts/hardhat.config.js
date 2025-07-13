@@ -1,5 +1,4 @@
 require("@nomicfoundation/hardhat-toolbox");
-
 require("@parity/hardhat-polkadot");
 require("@nomicfoundation/hardhat-ignition-ethers");
 const { vars } = require("hardhat/config");

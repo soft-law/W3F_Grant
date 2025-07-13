@@ -11,18 +11,9 @@ pragma solidity ^0.8.19;
 
 // This contract is used to store the types for the Copyrights Registry
 contract CopyrightsRegistryTypes {
-    // Beneficiary   configuration
-    address public feeRecipient;
-
-    // Registry configuration
-    uint256 public constant REGISTRY_FEE = 0.01 ether;
-    // License configuration
-    uint256 public constant MAX_ROYALTY_RATE = 1000; // 10% in basis points
-
     // Collection and asset counters
-    uint256 public _nextCollectionId;
-    uint256 public _nextCopyrightId;
-    uint256 public _nextLicenseId;
+    uint256 internal _nextCollectionId;
+    uint256 internal _nextCopyrightId;
 
     /// @dev Collection configuration (inspired by Polkadot NFTs pallet)
     struct CollectionConfig {
@@ -79,22 +70,6 @@ contract CopyrightsRegistryTypes {
         uint256 originalNftId;
     }
 
-    struct License {
-        address licenseOwner; // owner of the license
-        address licensee; // who is licensed to use the NFT
-        uint256 royaltyRate; // Royalty percentage (basis points)
-        uint256 licensePrice; // Price for licensing
-        bool digitalRights; // Digital/online rights
-        uint256 territorialRights; // Bitmask for territorial rights
-        uint256 exclusivityPeriod; // Exclusivity period in seconds
-        uint256 ipAssetId;
-        EconomicCopyrights grantedRights;
-        uint256 price;
-        uint256 duration; // License duration in seconds (0 = permanent)
-        uint256 issuedAt;
-        bool isActive;
-    }
-
     // Wrapping events
     event CopyrightProtected(
         uint256 indexed tokenId,
@@ -148,7 +123,6 @@ contract CopyrightsRegistryTypes {
     // Storage mappings
     mapping(uint256 => CopyrightAsset) public copyrightAssets;
     mapping(uint256 => Collection) public collections;
-    mapping(uint256 => License[]) public licenses;
     mapping(address => uint256[]) public creatorCollections;
     mapping(address => uint256[]) public creatorAssets;
 }
