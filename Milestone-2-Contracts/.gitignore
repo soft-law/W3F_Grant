@@ -5,4 +5,8 @@
 /package-lock.json
 .env
 /contracts/treasury
+/contracts/licenses
 /contracts/registry/Account.sol
+/contracts/test/03-Wrapper.js
+/contracts/test/04-Licenses.js
+/contracts/test/05-Subscriptions.js

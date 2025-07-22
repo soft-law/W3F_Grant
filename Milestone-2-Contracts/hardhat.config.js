@@ -7,7 +7,16 @@ require("dotenv").config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  solidity: "0.8.28",
+  solidity: {
+    version: "0.8.28",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+      viaIR: false, // ✅ Disabled for PolkaVM compatibility
+    },
+  },
   resolc: {
     version: "1.5.2",
     compilerSource: "npm",
@@ -39,6 +48,9 @@ module.exports = {
     localNode: {
       polkavm: true,
       url: `http://127.0.0.1:8545`,
+      gas: 12000000,
+      blockGasLimit: 0x1fffffffffffff,
+      timeout: 300000,
       // accounts: [process.env.PRIVATE_KEY1, process.env.PRIVATE_KEY2],
     },
     passetHub: {
@@ -47,9 +59,9 @@ module.exports = {
       // accounts: [process.env.PRIVATE_KEY1, process.env.PRIVATE_KEY2],
       accounts: [vars.get("PRIVATE_KEY")],
       // chainId: 420420422,
-      // timeout: 120000,
-      // gas: "auto",
-      // gasPrice: "auto",
+      gas: 12000000,
+      gasPrice: 20000000000,
+      timeout: 300000,
     },
 
     kusamaPVM: {
@@ -58,6 +70,13 @@ module.exports = {
       // accounts: [process.env.PRIVATE_KEY1, process.env.PRIVATE_KEY2],
       accounts: [vars.get("PRIVATE_KEY")],
       chainId: 420420418,
+      gas: 12000000,
+      timeout: 300000,
     },
+  },
+
+  // ✅ Extended timeouts for PolkaVM
+  mocha: {
+    timeout: 300000, // 5 minutes
   },
 };
