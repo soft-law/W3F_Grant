@@ -78,8 +78,6 @@ contract CopyrightsRegister is
         // Mint the copyright NFT
         _mint(msg.sender, assetId);
         _setTokenURI(assetId, _tokenUri);
-        // _addTokenToEnumeration(assetId);
-        // _addTokenToOwnerEnumeration(msg.sender, assetId);
 
         // Transfer the fee to the fee recipient
         payable(feeRecipient).transfer(msg.value);
@@ -101,6 +99,89 @@ contract CopyrightsRegister is
         // Update economic rights owner when NFT is transferred
         copyrightAssets[id].economicRightsOwner = to;
         emit EconomicRightsTransferred(id, previousOwner, to);
+    }
+
+    /*//////////////////////////////////////////////////////////////
+                        COPYRIGHT WRAPPER LOGIC
+    //////////////////////////////////////////////////////////////*/
+
+    /// @notice Wrap a copyright asset in a copyright NFT
+    function wrapCopyright(
+        address _nftContract,
+        uint256 _tokenId,
+        EconomicCopyrights memory rights,
+        string memory _name,
+        string memory _description,
+        string memory _image
+    ) public returns (uint256) {
+        // require(msg.value >= REGISTRY_FEE, "Insufficient fee");
+        IERC721 nftContract = IERC721(_nftContract);
+
+        require(
+            nftContract.ownerOf(_tokenId) == msg.sender,
+            "Not the owner of the NFT"
+        );
+
+        //Transfer the NFT to the registry
+        nftContract.transferFrom(msg.sender, address(this), _tokenId);
+
+        //Get the token URI from the original NFT
+        // string memory tokenUri = "";
+        // try nftContract.tokenURI(_tokenId) returns (string memory uri) {
+        //     tokenUri = uri;
+        // } catch {
+        //     tokenUri = "";
+        // }
+
+        uint256 newId = _nextCopyrightId++;
+
+        address _author = msg.sender;
+
+        CopyrightAsset memory copyrightAsset = CopyrightAsset({
+            author: _author,
+            economicRightsOwner: msg.sender,
+            copyrights: rights,
+            name: _name,
+            description: _description,
+            image: _image,
+            tokenUri: "", // metadata
+            isValidated: false,
+            originalNftContract: _nftContract,
+            originalNftId: _tokenId
+        });
+
+        copyrightAssets[newId] = copyrightAsset;
+
+        // Mint the copyright NFT
+        _mint(msg.sender, newId);
+        _setTokenURI(newId, "");
+
+        return newId;
+    }
+
+    function unwrapCopyright(uint256 _tokenId) public {
+        require(
+            copyrightAssets[_tokenId].originalNftContract != address(0),
+            "Asset is not wrapped"
+        );
+
+        // Transfer the NFT to the original owner
+        IERC721(copyrightAssets[_tokenId].originalNftContract).transferFrom(
+            address(this),
+            copyrightAssets[_tokenId].author,
+            copyrightAssets[_tokenId].originalNftId
+        );
+
+        // Burn the copyright NFT
+        _burn(_tokenId);
+
+        emit CopyrightUnwrapped(
+            _tokenId,
+            copyrightAssets[_tokenId].economicRightsOwner,
+            copyrightAssets[_tokenId].author,
+            copyrightAssets[_tokenId].originalNftContract,
+            copyrightAssets[_tokenId].originalNftId
+        );
     }
 
     /*//////////////////////////////////////////////////////////////

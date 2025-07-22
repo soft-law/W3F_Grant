@@ -57,6 +57,21 @@ contract CopyrightsRegistry {
         address indexed from,
         address indexed to
     );
+
+    struct CopyrightWrapped {
+        uint256 registryDate;
+        address originalNftContract;
+        uint256 originalNftId;
+    }
+
+    event CopyrightUnwrapped(
+        uint256 indexed tokenId,
+        address indexed owner,
+        address indexed author,
+        address originalContract,
+        uint256 originalTokenId
+    );
+
     // Storage mappings
     mapping(uint256 => CopyrightAsset) public copyrightAssets;
     mapping(address => uint256[]) public creatorAssets;
