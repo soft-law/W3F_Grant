@@ -28,12 +28,13 @@ The business plan includes:
 
 ## ⚙️ MILESTONE 2 – 📄 Smart Contracts
 
-This milestone will include:
+This milestone includes:
 
 - Solidity smart contracts for IP licensing  
-- Deployment on Asset Hub  
 - Documentation and testing  
-*(To be added)*
+
+> 🔗 [**Smart Contracts Repository**and](https://github.com/soft-law/softlaw-contracts)  
+> 📚 [**Documentation**](https://docs.soft.law/)
 
 ---
 
