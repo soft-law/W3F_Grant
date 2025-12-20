@@ -28,12 +28,12 @@ The business plan includes:
 
 ## ⚙️ MILESTONE 2 – 📄 Smart Contracts
 
-This milestone includes:
+This milestone, built in Foundry, includes:
 
 - Solidity smart contracts for IP licensing  
-- Documentation and testing  
+- Solidity tests
 
-> 🔗 [**Smart Contracts Repository**and](https://github.com/soft-law/softlaw-contracts)  
+> 🔗 [**Smart Contracts Repository**](https://github.com/soft-law/softlaw-contracts)  
 > 📚 [**Documentation**](https://docs.soft.law/)
 
 ---
