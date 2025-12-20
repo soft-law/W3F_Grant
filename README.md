@@ -26,12 +26,19 @@ The business plan includes:
 
 ---
 
+
 ## ⚙️ MILESTONE 2 – 📄 Smart Contracts
 
-This milestone, built in Foundry, includes:
+This milestone, built in Foundry, includes Solidity smart contracts deployed on **Asset Hub Westend Testnet** with the following features:
 
-- Solidity smart contracts for IP licensing  
-- Solidity tests
+- 🎨 NFT Minting – Intellectual Property Wrapper  
+- 📜 Licensing Manager – Offer and Accept Licenses  
+- 🔐 Exclusive and Non-Exclusive License Configuration  
+- 🏪 MarketPlace – Offer and Accept Purchases  
+- 💸 Payment, Rewards and Revenue Distribution  
+- ⚠️ Automatic Revocation and Penalties  
+- ⚖️ Dispute Resolution Module  
+- ✅ Test Code Implementation  
 
 > 🔗 [**Smart Contracts Repository**](https://github.com/soft-law/softlaw-contracts)  
 > 📚 [**Documentation**](https://docs.soft.law/)
