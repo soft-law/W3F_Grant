@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FACC15" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FACC15" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sphere" cx="40%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="60%" stop-color="#FACC15"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Outer wireframe diamond (icosahedron shield) -->
+  <polygon points="32,2 58,20 58,44 32,62 6,44 6,20" fill="none" stroke="#6B7280" stroke-width="0.8" opacity="0.35"/>
+  <line x1="32" y1="2" x2="32" y2="62" stroke="#6B7280" stroke-width="0.5" opacity="0.2"/>
+  <line x1="6" y1="20" x2="58" y2="44" stroke="#6B7280" stroke-width="0.5" opacity="0.2"/>
+  <line x1="58" y1="20" x2="6" y2="44" stroke="#6B7280" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Inner wireframe diamond (octahedron shield) -->
+  <polygon points="32,10 50,24 50,40 32,54 14,40 14,24" fill="none" stroke="#9CA3AF" stroke-width="1" opacity="0.45"/>
+
+  <!-- Isometric cube - top face -->
+  <polygon points="32,18 46,26 32,34 18,26" fill="#E5E7EB" stroke="#D1D5DB" stroke-width="0.5"/>
+  <!-- Isometric cube - left face -->
+  <polygon points="18,26 32,34 32,46 18,38" fill="#B0B3B8" stroke="#9CA3AF" stroke-width="0.5"/>
+  <!-- Isometric cube - right face -->
+  <polygon points="32,34 46,26 46,38 32,46" fill="#D1D5DB" stroke="#B0B3B8" stroke-width="0.5"/>
+
+  <!-- Golden glow -->
+  <circle cx="32" cy="33" r="12" fill="url(#glow)"/>
+
+  <!-- Golden core sphere -->
+  <circle cx="32" cy="33" r="5" fill="url(#sphere)"/>
+  <!-- Sphere highlight -->
+  <circle cx="30.5" cy="31" r="1.5" fill="#FEF3C7" opacity="0.7"/>
+</svg>

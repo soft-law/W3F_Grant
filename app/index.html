@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Soft.Law &mdash; Protecting Intellectual Property with Polkadot Tech. Register, license, and trade IP assets on-chain.">
+  <meta property="og:title" content="Soft.Law &mdash; IP Protection Platform">
+  <meta property="og:description" content="Register, license, and trade intellectual property assets on Polkadot Hub.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/brand/logo_white.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" href="/brand/logo_white.png">
+  <title>Soft.Law &mdash; IP Protection Platform</title>
+  <script>
+    (function() {
+      const stored = localStorage.getItem('softlaw-storage');
+      let theme = 'dark';
+      if (stored) {
+        try {
+          const data = JSON.parse(stored);
+          theme = data.state?.theme || 'dark';
+        } catch (e) {}
+      } else if (window.matchMedia) {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.classList.add(theme);
+      document.documentElement.style.backgroundColor = theme === 'dark' ? '#111111' : '#EFEDE6';
+
+      const colorSchemeMetaTag = document.querySelector('meta[name="color-scheme"]');
+      const themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
+      if (colorSchemeMetaTag) {
+        colorSchemeMetaTag.setAttribute('content', theme);
+      }
+      if (themeColorMetaTag) {
+        themeColorMetaTag.setAttribute('content', theme === 'dark' ? '#111111' : '#EFEDE6');
+      }
+    })();
+  </script>
+  <style>
+    html, body, #root {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    html.dark, html.dark body {
+      background: #111111;
+      color: #F4F2EB;
+    }
+
+    html.light, html.light body {
+      background: #EFEDE6;
+      color: #14110B;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+  </style>
+  <!-- DNS preconnects shave 100–300ms off first Privy/Google auth roundtrip -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital@1&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital@1&display=swap"></noscript>
+  <link rel="preconnect" href="https://auth.privy.io" crossorigin>
+  <link rel="preconnect" href="https://accounts.google.com" crossorigin>
+  <link rel="dns-prefetch" href="https://auth.privy.io">
+  <link rel="dns-prefetch" href="https://accounts.google.com">
+  <link href="/index.css" rel="stylesheet">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

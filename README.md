@@ -1,73 +1,43 @@
-# ![SoftLaw Logo](./softlaw_logo.png)  
-# SoftLaw – W3F Grant
+# SoftLaw — W3F Fast Grant Deliverables
 
-Welcome to the official repository for the **SoftLaw - W3F Fast Grant Deliverables**.
+SoftLaw is an intellectual-property registration, licensing, marketplace,
+revenue, and dispute-resolution application built on Polkadot Hub.
 
-**SoftLaw** is an intellectual property licensing and tokenization legaltech dApp, designed to revolutionize how creators, businesses, and organizations sell and manage IP rights.
+## Milestone 1 — Business plan
 
----
+- [Business plan](./business/business_plan.pdf)
 
-## ✅ MILESTONE 1 – 📄 Business Plan
+## Milestone 2 — Smart contracts V1
 
-The business plan includes:
+- [Smart-contract repository](https://github.com/soft-law/softlaw-contracts)
+- [Contract documentation](https://docs.soft.law/)
 
-- 🏢 Business Description  
-- 🧩 Product Description  
-- 💼 Business Model  
-- 📊 Market Analysis  
-- 🧠 User Research & Insights  
-- ⚔️ Competitor Analysis  
-- 📣 Marketing Plan  
-- 🛠 Product Development Plan  
-- 💰 Financial Plan & Projections  
-- 🚀 Go-to-Market Strategy & Roadmap  
+The V1 contracts cover ERC-721 IP assets, ERC-1155 licences, marketplace
+transactions, revenue distribution, royalties, and dispute resolution.
 
-> 🔗 [**View the Business Plan (PDF)**](./business_plan.pdf)
+## Milestone 3 — User interface and video
 
----
+| Deliverable | Link |
+|---|---|
+| Licence | [Apache License 2.0](./LICENSE) — disclosed deviation from MIT |
+| React + TypeScript frontend | [`app/`](./app/) |
+| Production deployment | [app.soft.law](https://app.soft.law/) |
+| Product demonstration | [Demo video](https://x.com/soft_law/status/2066059875881533919) |
+| Pitch | [PowerPoint deck](./pitch/pitch_deck.pptx) |
+| Live evaluation | [Evaluator walkthrough](./app/EVALUATOR_WALKTHROUGH.md) |
 
+The frontend supports public and confidential IP registration, nine licence
+profiles, IP and licence marketplace transactions, revenue and royalty views,
+and dispute workflows in English and Spanish.
 
-## ⚙️ MILESTONE 2 – 📄 Smart Contracts
+## Network
 
-This milestone, built in Foundry, includes Solidity smart contracts deployed on **Asset Hub Westend Testnet** with the following features:
+- Polkadot Hub Testnet
+- Chain ID: `420420417`
+- Native token: `PAS`
 
-- 🎨 NFT Minting – Intellectual Property Wrapper  
-- 📜 Licensing Manager – Offer and Accept Licenses  
-- 🔐 Exclusive and Non-Exclusive License Configuration  
-- 🏪 MarketPlace – Offer and Accept Purchases  
-- 💸 Payment, Rewards and Revenue Distribution  
-- ⚠️ Automatic Revocation and Penalties  
-- ⚖️ Dispute Resolution Module  
-- ✅ Test Code Implementation  
+## Licence
 
-> 🔗 [**Smart Contracts Repository**](https://github.com/soft-law/softlaw-contracts)  
-> 📚 [**Documentation**](https://docs.soft.law/)
+Licensed under the [Apache License 2.0](./LICENSE).
 
----
-
-## 🖥 MILESTONE 3 – 📄 Front-End
-
-This milestone will include:
-
-- Front-end dApp development  
-- Integration with smart contracts  
-*(To be added)*
-
----
-
-## 📌 Purpose of this Repository
-
-This repository serves as a transparent, version-controlled submission for the **SoftLaw W3F Grant**, documenting the three core milestones of the project.
-
----
-
-## 📬 Contact
-
-For investment opportunities, partnership inquiries, or questions, feel free to reach out:
-
-**Wario**  
-Director, SoftLaw  
-📧 wario@soft.law
-
-
-
+Copyright 2026 Softlaw S.A. de C.V.
